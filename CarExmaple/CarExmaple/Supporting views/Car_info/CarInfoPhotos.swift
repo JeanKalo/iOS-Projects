@@ -12,7 +12,7 @@ struct CarInfoPhotos: View {
         VStack (alignment: .leading, spacing : 10){
             Text("Car Interior")
                 .fontWeight(.medium)
-                .font(.system(size: 22))
+                .font(.system(size: 15))
                 .foregroundColor(.gray)
             HStack{
                 Image(systemName: "car")
