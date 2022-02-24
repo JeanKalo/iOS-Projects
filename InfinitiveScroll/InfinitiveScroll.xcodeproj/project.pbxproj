@@ -7,32 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D730BBD27C7C759008A9AF6 /* CarExmapleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D730BBC27C7C759008A9AF6 /* CarExmapleApp.swift */; };
-		2D730BBF27C7C759008A9AF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D730BBE27C7C759008A9AF6 /* ContentView.swift */; };
-		2D730BC127C7C75D008A9AF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D730BC027C7C75D008A9AF6 /* Assets.xcassets */; };
-		2D730BC427C7C75D008A9AF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D730BC327C7C75D008A9AF6 /* Preview Assets.xcassets */; };
-		2D730BD127C7C880008A9AF6 /* CarInfoBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D730BD027C7C880008A9AF6 /* CarInfoBasic.swift */; };
-		2D730BD427C7CC5F008A9AF6 /* CarInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D730BD327C7CC5F008A9AF6 /* CarInfoDetails.swift */; };
-		2D730BD627C7CE25008A9AF6 /* CarInfoPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D730BD527C7CE25008A9AF6 /* CarInfoPhotos.swift */; };
-		2D760ABF27C7F20A008E8978 /* CarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D760ABE27C7F20A008E8978 /* CarDetailView.swift */; };
-		2D760AC127C7FB2C008E8978 /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D760AC027C7FB2C008E8978 /* Color_extension.swift */; };
+		2D990D0627C7E6F00028F67A /* InfinitiveScrollApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D990D0527C7E6F00028F67A /* InfinitiveScrollApp.swift */; };
+		2D990D0827C7E6F00028F67A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D990D0727C7E6F00028F67A /* ContentView.swift */; };
+		2D990D0A27C7E6F50028F67A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D990D0927C7E6F50028F67A /* Assets.xcassets */; };
+		2D990D0D27C7E6F50028F67A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D990D0C27C7E6F50028F67A /* Preview Assets.xcassets */; };
+		2D990D1427C7E7130028F67A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D990D1327C7E7130028F67A /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D730BB927C7C759008A9AF6 /* CarExmaple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarExmaple.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D730BBC27C7C759008A9AF6 /* CarExmapleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarExmapleApp.swift; sourceTree = "<group>"; };
-		2D730BBE27C7C759008A9AF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2D730BC027C7C75D008A9AF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2D730BC327C7C75D008A9AF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2D730BD027C7C880008A9AF6 /* CarInfoBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoBasic.swift; sourceTree = "<group>"; };
-		2D730BD327C7CC5F008A9AF6 /* CarInfoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoDetails.swift; sourceTree = "<group>"; };
-		2D730BD527C7CE25008A9AF6 /* CarInfoPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoPhotos.swift; sourceTree = "<group>"; };
-		2D760ABE27C7F20A008E8978 /* CarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailView.swift; sourceTree = "<group>"; };
-		2D760AC027C7FB2C008E8978 /* Color_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
+		2D990D0227C7E6F00028F67A /* InfinitiveScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinitiveScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D990D0527C7E6F00028F67A /* InfinitiveScrollApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinitiveScrollApp.swift; sourceTree = "<group>"; };
+		2D990D0727C7E6F00028F67A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2D990D0927C7E6F50028F67A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D990D0C27C7E6F50028F67A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2D990D1327C7E7130028F67A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2D730BB627C7C759008A9AF6 /* Frameworks */ = {
+		2D990CFF27C7E6F00028F67A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,138 +34,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D730BB027C7C759008A9AF6 = {
+		2D990CF927C7E6F00028F67A = {
 			isa = PBXGroup;
 			children = (
-				2D730BBB27C7C759008A9AF6 /* CarExmaple */,
-				2D730BBA27C7C759008A9AF6 /* Products */,
+				2D990D0427C7E6F00028F67A /* InfinitiveScroll */,
+				2D990D0327C7E6F00028F67A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		2D730BBA27C7C759008A9AF6 /* Products */ = {
+		2D990D0327C7E6F00028F67A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D730BB927C7C759008A9AF6 /* CarExmaple.app */,
+				2D990D0227C7E6F00028F67A /* InfinitiveScroll.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2D730BBB27C7C759008A9AF6 /* CarExmaple */ = {
+		2D990D0427C7E6F00028F67A /* InfinitiveScroll */ = {
 			isa = PBXGroup;
 			children = (
-				2D730BCF27C7C7F2008A9AF6 /* Application */,
-				2D730BCE27C7C7A7008A9AF6 /* Utilities */,
-				2D730BCD27C7C796008A9AF6 /* Supporting views */,
-				2D730BCC27C7C78F008A9AF6 /* Models */,
-				2D730BCB27C7C785008A9AF6 /* View Models */,
-				2D730BCA27C7C77E008A9AF6 /* Views */,
-				2D730BC227C7C75D008A9AF6 /* Preview Content */,
+				2D990D0527C7E6F00028F67A /* InfinitiveScrollApp.swift */,
+				2D990D0727C7E6F00028F67A /* ContentView.swift */,
+				2D990D0927C7E6F50028F67A /* Assets.xcassets */,
+				2D990D0B27C7E6F50028F67A /* Preview Content */,
+				2D990D1327C7E7130028F67A /* ViewModel.swift */,
 			);
-			path = CarExmaple;
+			path = InfinitiveScroll;
 			sourceTree = "<group>";
 		};
-		2D730BC227C7C75D008A9AF6 /* Preview Content */ = {
+		2D990D0B27C7E6F50028F67A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				2D730BC327C7C75D008A9AF6 /* Preview Assets.xcassets */,
+				2D990D0C27C7E6F50028F67A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		2D730BCA27C7C77E008A9AF6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2D730BBE27C7C759008A9AF6 /* ContentView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		2D730BCB27C7C785008A9AF6 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Models";
-			sourceTree = "<group>";
-		};
-		2D730BCC27C7C78F008A9AF6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		2D730BCD27C7C796008A9AF6 /* Supporting views */ = {
-			isa = PBXGroup;
-			children = (
-				2D730BD227C7C885008A9AF6 /* Car_info */,
-			);
-			path = "Supporting views";
-			sourceTree = "<group>";
-		};
-		2D730BCE27C7C7A7008A9AF6 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				2D760AC027C7FB2C008E8978 /* Color_extension.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		2D730BCF27C7C7F2008A9AF6 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				2D730BC027C7C75D008A9AF6 /* Assets.xcassets */,
-				2D730BBC27C7C759008A9AF6 /* CarExmapleApp.swift */,
-			);
-			path = Application;
-			sourceTree = "<group>";
-		};
-		2D730BD227C7C885008A9AF6 /* Car_info */ = {
-			isa = PBXGroup;
-			children = (
-				2D730BD027C7C880008A9AF6 /* CarInfoBasic.swift */,
-				2D730BD327C7CC5F008A9AF6 /* CarInfoDetails.swift */,
-				2D730BD527C7CE25008A9AF6 /* CarInfoPhotos.swift */,
-				2D760ABE27C7F20A008E8978 /* CarDetailView.swift */,
-			);
-			path = Car_info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D730BB827C7C759008A9AF6 /* CarExmaple */ = {
+		2D990D0127C7E6F00028F67A /* InfinitiveScroll */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D730BC727C7C75D008A9AF6 /* Build configuration list for PBXNativeTarget "CarExmaple" */;
+			buildConfigurationList = 2D990D1027C7E6F50028F67A /* Build configuration list for PBXNativeTarget "InfinitiveScroll" */;
 			buildPhases = (
-				2D730BB527C7C759008A9AF6 /* Sources */,
-				2D730BB627C7C759008A9AF6 /* Frameworks */,
-				2D730BB727C7C759008A9AF6 /* Resources */,
+				2D990CFE27C7E6F00028F67A /* Sources */,
+				2D990CFF27C7E6F00028F67A /* Frameworks */,
+				2D990D0027C7E6F00028F67A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = CarExmaple;
-			productName = CarExmaple;
-			productReference = 2D730BB927C7C759008A9AF6 /* CarExmaple.app */;
+			name = InfinitiveScroll;
+			productName = InfinitiveScroll;
+			productReference = 2D990D0227C7E6F00028F67A /* InfinitiveScroll.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2D730BB127C7C759008A9AF6 /* Project object */ = {
+		2D990CFA27C7E6F00028F67A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					2D730BB827C7C759008A9AF6 = {
+					2D990D0127C7E6F00028F67A = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
-			buildConfigurationList = 2D730BB427C7C759008A9AF6 /* Build configuration list for PBXProject "CarExmaple" */;
+			buildConfigurationList = 2D990CFD27C7E6F00028F67A /* Build configuration list for PBXProject "InfinitiveScroll" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -181,47 +113,43 @@
 				en,
 				Base,
 			);
-			mainGroup = 2D730BB027C7C759008A9AF6;
-			productRefGroup = 2D730BBA27C7C759008A9AF6 /* Products */;
+			mainGroup = 2D990CF927C7E6F00028F67A;
+			productRefGroup = 2D990D0327C7E6F00028F67A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D730BB827C7C759008A9AF6 /* CarExmaple */,
+				2D990D0127C7E6F00028F67A /* InfinitiveScroll */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2D730BB727C7C759008A9AF6 /* Resources */ = {
+		2D990D0027C7E6F00028F67A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D730BC427C7C75D008A9AF6 /* Preview Assets.xcassets in Resources */,
-				2D730BC127C7C75D008A9AF6 /* Assets.xcassets in Resources */,
+				2D990D0D27C7E6F50028F67A /* Preview Assets.xcassets in Resources */,
+				2D990D0A27C7E6F50028F67A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2D730BB527C7C759008A9AF6 /* Sources */ = {
+		2D990CFE27C7E6F00028F67A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D730BD627C7CE25008A9AF6 /* CarInfoPhotos.swift in Sources */,
-				2D730BBF27C7C759008A9AF6 /* ContentView.swift in Sources */,
-				2D730BD127C7C880008A9AF6 /* CarInfoBasic.swift in Sources */,
-				2D760AC127C7FB2C008E8978 /* Color_extension.swift in Sources */,
-				2D760ABF27C7F20A008E8978 /* CarDetailView.swift in Sources */,
-				2D730BBD27C7C759008A9AF6 /* CarExmapleApp.swift in Sources */,
-				2D730BD427C7CC5F008A9AF6 /* CarInfoDetails.swift in Sources */,
+				2D990D0827C7E6F00028F67A /* ContentView.swift in Sources */,
+				2D990D1427C7E7130028F67A /* ViewModel.swift in Sources */,
+				2D990D0627C7E6F00028F67A /* InfinitiveScrollApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		2D730BC527C7C75D008A9AF6 /* Debug */ = {
+		2D990D0E27C7E6F50028F67A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,7 +210,7 @@
 			};
 			name = Debug;
 		};
-		2D730BC627C7C75D008A9AF6 /* Release */ = {
+		2D990D0F27C7E6F50028F67A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -337,14 +265,14 @@
 			};
 			name = Release;
 		};
-		2D730BC827C7C75D008A9AF6 /* Debug */ = {
+		2D990D1127C7E6F50028F67A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CarExmaple/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InfinitiveScroll/Preview Content\"";
 				DEVELOPMENT_TEAM = MW2GYVS5AM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -353,12 +281,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bootcamp.CarExmaple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bootcamp.InfinitiveScroll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -366,14 +295,14 @@
 			};
 			name = Debug;
 		};
-		2D730BC927C7C75D008A9AF6 /* Release */ = {
+		2D990D1227C7E6F50028F67A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CarExmaple/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InfinitiveScroll/Preview Content\"";
 				DEVELOPMENT_TEAM = MW2GYVS5AM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -382,12 +311,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bootcamp.CarExmaple;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bootcamp.InfinitiveScroll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -398,25 +328,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D730BB427C7C759008A9AF6 /* Build configuration list for PBXProject "CarExmaple" */ = {
+		2D990CFD27C7E6F00028F67A /* Build configuration list for PBXProject "InfinitiveScroll" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D730BC527C7C75D008A9AF6 /* Debug */,
-				2D730BC627C7C75D008A9AF6 /* Release */,
+				2D990D0E27C7E6F50028F67A /* Debug */,
+				2D990D0F27C7E6F50028F67A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D730BC727C7C75D008A9AF6 /* Build configuration list for PBXNativeTarget "CarExmaple" */ = {
+		2D990D1027C7E6F50028F67A /* Build configuration list for PBXNativeTarget "InfinitiveScroll" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D730BC827C7C75D008A9AF6 /* Debug */,
-				2D730BC927C7C75D008A9AF6 /* Release */,
+				2D990D1127C7E6F50028F67A /* Debug */,
+				2D990D1227C7E6F50028F67A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 2D730BB127C7C759008A9AF6 /* Project object */;
+	rootObject = 2D990CFA27C7E6F00028F67A /* Project object */;
 }
