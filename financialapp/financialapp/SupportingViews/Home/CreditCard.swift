@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct CreditCard: View {
+struct CreditCard: View{
     var cardName : String
+    var  backgroundCardColor : Color
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
-            CardBackground()
+            CardBackground(color: backgroundCardColor)
             VStack{
                 Text(cardName)
                     .font(.title)
@@ -19,25 +20,31 @@ struct CreditCard: View {
             }
         }
     }
+    
+    static func cardOffset(index : Int)->CGFloat{
+        return index <= 2 ? CGFloat(index) * 15 : 0
+    }
+    
 }
 
 struct CardBackground :View {
+    var color  : Color
     var body: some View{
         HStack{
-            Circle()
-                .fill(Color("Azul claro"))
-                .frame(width: .getScreenWidth * 0.9, height: 400)
-                .offset(x: 210, y: -160)
-            
-            Circle()
-                .trim(from: 0.0, to: 1.0)
-                .fill(Color("Rosado"))
-                .frame(width: .getScreenWidth * 0.6, height: 500)
-                .offset(x: -310, y: 100)
+//            Circle()
+//                .fill(Color("Azul claro"))
+//                .frame(width: .getScreenWidth * 0.9, height: 400)
+//                .offset(x: 210, y: -160)
+//
+//            Circle()
+//                .trim(from: 0.0, to: 1.0)
+//                .fill(Color("Rosado"))
+//                .frame(width: .getScreenWidth * 0.6, height: 500)
+//                .offset(x: -310, y: 100)
                 
         }
-        .frame(width: .getScreenWidth - 50, height: 200)
-        .background(Color("Morado"))
+        .frame(width: .getScreenWidth - 60, height: 200)
+        .background(color)
         .clipShape(RoundedRectangle(cornerRadius: 15,style: .continuous))
         
         // mark: just show what is inside the frme bounds
@@ -49,6 +56,6 @@ struct CardBackground :View {
 
 struct CreditCard_Previews: PreviewProvider {
     static var previews: some View {
-        CreditCard(cardName: "JENYUS")
+        CreditCard(cardName: "JENYUS", backgroundCardColor: .blue)
     }
 }
