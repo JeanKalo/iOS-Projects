@@ -46,7 +46,6 @@ struct ContentView: View {
                             }
                             .padding(50)
                             .frame(maxWidth: .infinity)
-                            
                         }
                         else {
                             Text(dataVm.data[x].description)
