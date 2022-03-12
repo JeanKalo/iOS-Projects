@@ -8,27 +8,39 @@
 import SwiftUI
 
 struct CreditCard: View{
-    var cardName : String
-    var  backgroundCardColor : Color
+    var index : Int
+    @Binding var swipedCardCounter : Int
+    var card : Card
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
-            CardBackground(color: backgroundCardColor)
+            CardBackground(
+                index: index,
+                swipedCardCounter: $swipedCardCounter,
+                color: card.cardColor
+            )
             VStack{
-                Text(cardName)
+                Text(card.owner)
                     .font(.title)
                     .foregroundColor(.white)
             }
         }
     }
     
-    static func cardOffset(index : Int)->CGFloat{
-        return index <= 2 ? CGFloat(index) * 15 : 0
+    static func cardOffsetY(index : Int)->CGFloat{
+        return index <= 2 ? CGFloat(index) * 10 : 0
+    }
+    
+    static func cardOffsetX(index : Int)->CGFloat{
+        return index <= 2 ? CGFloat(index) * 40 : 60
     }
     
 }
 
 struct CardBackground :View {
+    var index : Int
+    @Binding var swipedCardCounter : Int
     var color  : Color
+    
     var body: some View{
         HStack{
 //            Circle()
@@ -41,21 +53,33 @@ struct CardBackground :View {
 //                .fill(Color("Rosado"))
 //                .frame(width: .getScreenWidth * 0.6, height: 500)
 //                .offset(x: -310, y: 100)
-                
         }
-        .frame(width: .getScreenWidth - 60, height: 200)
+        .frame(maxWidth:.infinity, maxHeight: .infinity)
         .background(color)
         .clipShape(RoundedRectangle(cornerRadius: 15,style: .continuous))
-        
         // mark: just show what is inside the frme bounds
         .clipped(antialiased: true)
-
-        
+    }
+    
+    func getWidth(index: Int)->CGFloat{
+        let boxWidth = CGFloat.getScreenWidth - 60
+        let cardWidth = (index - swipedCardCounter) <= 3 ? CGFloat(index) * 30 : 60
+        return boxWidth - cardWidth
+    }
+    
+    func getHeight(index: Int)->CGFloat {
+        let boxHeight = CGFloat(200)
+        let cardHeight = (index - swipedCardCounter) <= 2 ? CGFloat(index) * 20 : 40
+        return boxHeight - cardHeight
     }
 }
 
 struct CreditCard_Previews: PreviewProvider {
     static var previews: some View {
-        CreditCard(cardName: "JENYUS", backgroundCardColor: .blue)
+        ContentView()
+//        CreditCard(
+//            index: 2, swipedCardCounter: .constant(1),
+//            card: Card(id: 0, cardColor: Color("Morado"), owner: "Jean Carlos 1")
+//        )
     }
 }
