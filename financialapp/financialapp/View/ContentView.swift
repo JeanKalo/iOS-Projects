@@ -18,21 +18,24 @@ struct ContentView: View {
                 ZStack(alignment:Alignment(horizontal: .leading, vertical: .top)){
                     
                     ForEach(homeVm.creditCards.indices.reversed(), id:\.self){ i in
-                        
                         HStack{
+                        Spacer()
                             CreditCard(
                                 index: i,
                                 swipedCardCounter: $homeVm.swipedCardCounter,
                                 card: homeVm.creditCards[i]
                             )
-                                .frame(width: getWidth(index: i), height: getHeight(index: i))
+                                .frame(
+                                    width: getWidth(index: i - homeVm.swipedCardCounter),
+                                    height: getHeight(index: i - homeVm.swipedCardCounter)
+                                )
                                 .offset(
                                     x: CreditCard.cardOffsetX(index: i - homeVm.swipedCardCounter),
                                     y:-CreditCard.cardOffsetY(index: i - homeVm.swipedCardCounter)
                                 )
+                            Spacer()
                         }
-                        .contentShape(Rectangle())
-                        .frame(height: 200)
+                        .frame(height: 300)
                         .offset(
                             x: homeVm.creditCards[i].offset,
                             y: homeVm.creditCards[i].offset
@@ -50,9 +53,9 @@ struct ContentView: View {
                     }
                 }
                 .frame(width: .getScreenWidth, height: 250)
-//                .background(Color.gray.opacity(0.01))
                 
             }
+            //Regresar tarjetas
             HStack{
                 Spacer()
                 Image(systemName: "arrow.right")
@@ -76,7 +79,7 @@ struct ContentView: View {
                     }
                 }
             }
-            
+            //Transacciones
             Transactions()
         }
         .background(Color.gray.opacity(0.03))
@@ -115,13 +118,13 @@ struct ContentView: View {
     
     func getWidth(index: Int)->CGFloat {
         let boxWidth = CGFloat.getScreenWidth - 60
-        let cardWidth = (index - homeVm.swipedCardCounter) <= 3 ? CGFloat(index) * 30 : 60
+        let cardWidth = index <= 3 ? CGFloat(index) * 30 : 60
         return boxWidth - cardWidth
     }
     
     func getHeight(index: Int)->CGFloat {
         let boxHeight = CGFloat(200)
-        let cardHeight = (index - homeVm.swipedCardCounter) <= 2 ? CGFloat(index) * 20 : 40
+        let cardHeight = index <= 3 ? CGFloat(index) * 20 : 40
         return boxHeight - cardHeight
     }
 }

@@ -27,11 +27,11 @@ struct CreditCard: View{
     }
     
     static func cardOffsetY(index : Int)->CGFloat{
-        return index <= 2 ? CGFloat(index) * 10 : 0
+        return index <= 3 ? CGFloat(index) * 20 : 20
     }
     
     static func cardOffsetX(index : Int)->CGFloat{
-        return index <= 2 ? CGFloat(index) * 40 : 60
+        return index <= 3 ? CGFloat(index) * 25 : 20
     }
     
 }
