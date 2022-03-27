@@ -22,6 +22,8 @@ struct ContentView: View {
     
     @State var index_selected : Int = 0
     
+    @Environment(\.presentationMode) private var presentationMode
+    
     @Namespace var cardHeroAnimation
     
     init(){
@@ -47,7 +49,21 @@ struct ContentView: View {
             }
             .navigationTitle("My personal account")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
             .toolbar(content: {
+                ToolbarItem(placement: .navigation) {
+                    Button {
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        HStack(spacing:5){
+                            Image(systemName:"chevron.left")
+                            Text("Salir")
+                        }
+                        .font(.system(size: 18,weight:.medium))
+                    }
+
+                }
+                
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         print("Create another account")

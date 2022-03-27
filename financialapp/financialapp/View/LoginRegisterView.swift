@@ -59,9 +59,7 @@ struct LoginRegisterView: View {
     }
     
     var sign_in_button : some View{
-        Button {
-            print("Sign in")
-        } label: {
+        NavigationLink(destination: ContentView()){
             Image(systemName: "arrow.right")
                 .font(.system(size: 20))
                 .foregroundColor(.white)
@@ -69,12 +67,14 @@ struct LoginRegisterView: View {
                 .background(Color("signInColor"))
                 .clipShape(Circle())
         }
-        
     }
     
     var content  : some View{
-        VStack{
+        VStack(alignment:.leading,spacing: 20){
             Spacer()
+            Text("Login")
+                .font(.system(size:25,weight:.semibold))
+                .foregroundColor(.gray)
             HStack{
                 Spacer(minLength: 50)
                 Image(systemName: "person")

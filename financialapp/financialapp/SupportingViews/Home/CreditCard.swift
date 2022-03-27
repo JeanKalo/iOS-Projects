@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+var foreGroundColor : Color = .white
+
 struct CreditCard: View{
     var index : Int
     @Binding var swipedCardCounter : Int
@@ -25,9 +27,10 @@ struct CreditCard: View{
                     HStack {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 32))
-                            .foregroundColor(Color.primary)
+                            .foregroundColor(foreGroundColor)
                         Text("$")+Text(String(format:"%.1f",card.monto))
                             .font(.system(size: 18,weight: .semibold))
+                            .foregroundColor(foreGroundColor)
                     }
                     Spacer()
                     Image("cardIcon")
@@ -41,44 +44,24 @@ struct CreditCard: View{
                 //MARK: card number
                 Text("**** **** **** 5647")
                     .font(.system(size: 25,weight: .semibold))
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(foreGroundColor)
                 
                 Spacer()
                 
                 //MARK: owner, expirationDate
                 HStack{
-                    VStack(alignment:.leading) {
-                        Text(card.owner)
-                            .font(.system(size: 18,weight: .semibold))
-                            .foregroundColor(Color.primary)
-                        Text(card.type.rawValue)
-                            .font(.caption)
-                            .foregroundColor(Color.primary)
-                    }
+                    KeyValueView(key:card.owner , value: card.type.rawValue)
                     Spacer()
                     HStack{
-                        VStack(alignment:.leading) {
-                            Text("06/26")
-                                .font(.system(size: 18,weight: .semibold))
-                                .foregroundColor(Color.primary)
-                            Text("expiration")
-                                .font(.caption)
-                                .foregroundColor(Color.primary)
-                        }
-                        VStack(alignment:.leading) {
-                            Text("123")
-                                .font(.system(size: 18,weight: .semibold))
-                                .foregroundColor(Color.primary)
-                            Text("CVS")
-                                .font(.caption)
-                                .foregroundColor(Color.primary)
-                        }
+                        KeyValueView(key: "06/26" , value: "expiration")
+                        KeyValueView(key: "123", value: "CVS")
                     }
                 }
             }
             .padding()
         }
     }
+
     
     static func cardOffsetY(index : Int)->CGFloat{
         return index <= 3 ? CGFloat(index) * 20 : 20
@@ -90,6 +73,21 @@ struct CreditCard: View{
     
     @ViewBuilder func text()->some View{
         Text("hola")
+    }
+}
+
+struct KeyValueView : View{
+    var key : String
+    var value : String
+    var body: some View{
+        VStack(alignment:.leading) {
+            Text(key)
+                .font(.system(size: 18,weight: .semibold))
+                .foregroundColor(foreGroundColor)
+            Text(value)
+                .font(.caption)
+                .foregroundColor(foreGroundColor)
+        }
     }
 }
 
