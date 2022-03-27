@@ -16,13 +16,67 @@ struct CreditCard: View{
             CardBackground(
                 index: index,
                 swipedCardCounter: $swipedCardCounter,
-                color: card.cardColor
+                color: card.cardColor,
+                card: card
             )
-            VStack{
-                Text(card.owner)
-                    .font(.title)
-                    .foregroundColor(.white)
+            VStack(alignment:.leading){
+                //MARK: logoTipo y validación
+                HStack{
+                    HStack {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 32))
+                            .foregroundColor(Color.primary)
+                        Text("$")+Text(String(format:"%.1f",card.monto))
+                            .font(.system(size: 18,weight: .semibold))
+                    }
+                    Spacer()
+                    Image("cardIcon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 32, height: 32)
+                }
+                
+                Spacer()
+                
+                //MARK: card number
+                Text("**** **** **** 5647")
+                    .font(.system(size: 25,weight: .semibold))
+                    .foregroundColor(Color.primary)
+                
+                Spacer()
+                
+                //MARK: owner, expirationDate
+                HStack{
+                    VStack(alignment:.leading) {
+                        Text(card.owner)
+                            .font(.system(size: 18,weight: .semibold))
+                            .foregroundColor(Color.primary)
+                        Text(card.type.rawValue)
+                            .font(.caption)
+                            .foregroundColor(Color.primary)
+                    }
+                    Spacer()
+                    HStack{
+                        VStack(alignment:.leading) {
+                            Text("06/26")
+                                .font(.system(size: 18,weight: .semibold))
+                                .foregroundColor(Color.primary)
+                            Text("expiration")
+                                .font(.caption)
+                                .foregroundColor(Color.primary)
+                        }
+                        VStack(alignment:.leading) {
+                            Text("123")
+                                .font(.system(size: 18,weight: .semibold))
+                                .foregroundColor(Color.primary)
+                            Text("CVS")
+                                .font(.caption)
+                                .foregroundColor(Color.primary)
+                        }
+                    }
+                }
             }
+            .padding()
         }
     }
     
@@ -34,32 +88,38 @@ struct CreditCard: View{
         return index <= 3 ? CGFloat(index) * 25 : 20
     }
     
+    @ViewBuilder func text()->some View{
+        Text("hola")
+    }
 }
 
 struct CardBackground :View {
     var index : Int
+    
     @Binding var swipedCardCounter : Int
+    
     var color  : Color
+    
+    var card : Card
     
     var body: some View{
         HStack{
-//            Circle()
-//                .fill(Color("Azul claro"))
-//                .frame(width: .getScreenWidth * 0.9, height: 400)
-//                .offset(x: 210, y: -160)
-//
-//            Circle()
-//                .trim(from: 0.0, to: 1.0)
-//                .fill(Color("Rosado"))
-//                .frame(width: .getScreenWidth * 0.6, height: 500)
-//                .offset(x: -310, y: 100)
+            ForEach(card.listCircles,id:\.id) { circle in
+                Circle()
+                    .fill(circle.color)
+                    .frame(width: circle.size, height: circle.size)
+                    .offset(x: circle.offset, y: circle.offset)
+            }
         }
-        .frame(maxWidth:.infinity, maxHeight: .infinity)
+        .frame(maxWidth: CGFloat.getScreenWidth - 60, maxHeight: .infinity)
         .background(color)
         .clipShape(RoundedRectangle(cornerRadius: 15,style: .continuous))
         // mark: just show what is inside the frme bounds
         .clipped(antialiased: true)
     }
+    
+    
+    
     
     func getWidth(index: Int)->CGFloat{
         let boxWidth = CGFloat.getScreenWidth - 60
@@ -72,14 +132,15 @@ struct CardBackground :View {
         let cardHeight = (index - swipedCardCounter) <= 2 ? CGFloat(index) * 20 : 40
         return boxHeight - cardHeight
     }
+    
 }
 
 struct CreditCard_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-//        CreditCard(
-//            index: 2, swipedCardCounter: .constant(1),
-//            card: Card(id: 0, cardColor: Color("Morado"), owner: "Jean Carlos 1")
-//        )
+        //        CreditCard(
+        //            index: 2, swipedCardCounter: .constant(1),
+        //            card: Card(id: 0, cardColor: Color("Morado"), owner: "Jean Carlos 1")
+        //        )
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D72C1AC27D8EFEC006AAAD0 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D72C1AB27D8EFEC006AAAD0 /* CardModel.swift */; };
+		2D8A39F527EF82CA0023CA4A /* LoginRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A39F427EF82C90023CA4A /* LoginRegisterView.swift */; };
 		2D990F1D27D6CCA200D90478 /* financialappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D990F1C27D6CCA200D90478 /* financialappApp.swift */; };
 		2D990F1F27D6CCA200D90478 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D990F1E27D6CCA200D90478 /* ContentView.swift */; };
 		2D990F2127D6CCA800D90478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D990F2027D6CCA800D90478 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		2D72C1A927D8E3AD006AAAD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D72C1AB27D8EFEC006AAAD0 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		2D8A39F427EF82C90023CA4A /* LoginRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterView.swift; sourceTree = "<group>"; };
 		2D990F1927D6CCA200D90478 /* financialapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = financialapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D990F1C27D6CCA200D90478 /* financialappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = financialappApp.swift; sourceTree = "<group>"; };
 		2D990F1E27D6CCA200D90478 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				2D990F1E27D6CCA200D90478 /* ContentView.swift */,
+				2D8A39F427EF82C90023CA4A /* LoginRegisterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DEF6EFA27D7D7CC00A6175E /* CreditCard.swift in Sources */,
+				2D8A39F527EF82CA0023CA4A /* LoginRegisterView.swift in Sources */,
 				2D990F1F27D6CCA200D90478 /* ContentView.swift in Sources */,
 				2DEF6EF727D7D6F600A6175E /* HomeViewModel.swift in Sources */,
 				2D990F1D27D6CCA200D90478 /* financialappApp.swift in Sources */,
@@ -258,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -313,7 +317,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -337,7 +341,8 @@
 				INFOPLIST_FILE = financialapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -366,7 +371,8 @@
 				INFOPLIST_FILE = financialapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

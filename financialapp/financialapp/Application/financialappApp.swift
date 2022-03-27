@@ -11,7 +11,10 @@ import SwiftUI
 struct financialappApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            LoginRegisterView()
+            NavigationView{
+                ContentView()
+            }
         }
     }
 }
