@@ -65,9 +65,7 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        print("Create another account")
-                    } label: {
+                    NavigationLink(destination: CreatNewCardView()){
                         HStack(spacing:0){
                             Image(systemName: "plus")
                                 .font(.system(size: 15))

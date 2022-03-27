@@ -13,6 +13,8 @@
 		2D990F1F27D6CCA200D90478 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D990F1E27D6CCA200D90478 /* ContentView.swift */; };
 		2D990F2127D6CCA800D90478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D990F2027D6CCA800D90478 /* Assets.xcassets */; };
 		2D990F2427D6CCA800D90478 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D990F2327D6CCA800D90478 /* Preview Assets.xcassets */; };
+		2DC7EFB127F018C100E6BD7D /* CreatNewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC7EFB027F018C100E6BD7D /* CreatNewCardView.swift */; };
+		2DC7EFB327F01EDC00E6BD7D /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC7EFB227F01EDC00E6BD7D /* ProjectViewModel.swift */; };
 		2DEF6EF727D7D6F600A6175E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF6EF627D7D6F600A6175E /* HomeViewModel.swift */; };
 		2DEF6EFA27D7D7CC00A6175E /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF6EF927D7D7CC00A6175E /* CreditCard.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +28,8 @@
 		2D990F1E27D6CCA200D90478 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2D990F2027D6CCA800D90478 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D990F2327D6CCA800D90478 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2DC7EFB027F018C100E6BD7D /* CreatNewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatNewCardView.swift; sourceTree = "<group>"; };
+		2DC7EFB227F01EDC00E6BD7D /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		2DEF6EF627D7D6F600A6175E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2DEF6EF927D7D7CC00A6175E /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +96,7 @@
 			children = (
 				2D990F1E27D6CCA200D90478 /* ContentView.swift */,
 				2D8A39F427EF82C90023CA4A /* LoginRegisterView.swift */,
+				2DC7EFB027F018C100E6BD7D /* CreatNewCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				2DEF6EF627D7D6F600A6175E /* HomeViewModel.swift */,
+				2DC7EFB227F01EDC00E6BD7D /* ProjectViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -203,6 +209,8 @@
 				2D8A39F527EF82CA0023CA4A /* LoginRegisterView.swift in Sources */,
 				2D990F1F27D6CCA200D90478 /* ContentView.swift in Sources */,
 				2DEF6EF727D7D6F600A6175E /* HomeViewModel.swift in Sources */,
+				2DC7EFB327F01EDC00E6BD7D /* ProjectViewModel.swift in Sources */,
+				2DC7EFB127F018C100E6BD7D /* CreatNewCardView.swift in Sources */,
 				2D990F1D27D6CCA200D90478 /* financialappApp.swift in Sources */,
 				2D72C1AC27D8EFEC006AAAD0 /* CardModel.swift in Sources */,
 			);

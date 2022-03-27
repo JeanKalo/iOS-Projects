@@ -13,6 +13,7 @@ struct financialappApp: App {
         WindowGroup {
             NavigationView{
                 LoginRegisterView()
+                    .environmentObject(ProjectViewModel())
             }
         }
     }

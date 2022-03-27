@@ -132,7 +132,6 @@ class HomeViewModel : ObservableObject{
             )
         ]
     }
-
     var colors : [Color] = [
         Color("circle_gray"),
         Color("loginColor"),

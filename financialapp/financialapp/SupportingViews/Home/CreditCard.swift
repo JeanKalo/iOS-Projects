@@ -28,9 +28,15 @@ struct CreditCard: View{
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 32))
                             .foregroundColor(foreGroundColor)
-                        Text("$")+Text(String(format:"%.1f",card.monto))
-                            .font(.system(size: 18,weight: .semibold))
-                            .foregroundColor(foreGroundColor)
+                        HStack(spacing: 0){
+                            Text("$")
+                                .font(.system(size: 18,weight: .semibold))
+                                .foregroundColor(foreGroundColor)
+                            Text(String(format:"%.1f",card.monto))
+                                .font(.system(size: 18,weight: .semibold))
+                                .foregroundColor(foreGroundColor)
+                        }
+                        
                     }
                     Spacer()
                     Image("cardIcon")
