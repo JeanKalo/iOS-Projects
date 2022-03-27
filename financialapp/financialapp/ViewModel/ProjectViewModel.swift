@@ -57,15 +57,13 @@ class ProjectViewModel : ObservableObject {
     
     func addCircles(_ number : Int){
         for _ in 0..<number{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.card.listCircles.append(
-                    BackgroundCircles(
-                        color: self.colors.randomElement() ?? Color("Morado"),
-                        size: self.random_size(),
-                        offset: self.random_offset()
-                    )
+            self.card.listCircles.append(
+                BackgroundCircles(
+                    color: self.colors.randomElement() ?? Color("Morado"),
+                    size: self.random_size(),
+                    offset: self.random_offset()
                 )
-            }
+            )
         }
     }
     
