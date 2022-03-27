@@ -14,6 +14,11 @@ enum ServicesAllows : String,CaseIterable {
     case takeOutMoney = "Retiro de dinero"
 }
 
+enum FocusableField : Hashable{
+    case monto
+    case destination
+}
+
 class HomeViewModel : ObservableObject{
     @Published var creditCards : [Card] = []
     

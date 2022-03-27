@@ -26,6 +26,22 @@ struct ContentView: View {
     
     @Namespace var cardHeroAnimation
     
+    @State var isSheetActive : Bool = false{
+        willSet{
+            if newValue {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.focus = .monto
+                }
+            }
+        }
+    }
+    
+    @State var destination : String = ""
+    
+    @State var amount : String = ""
+    
+    @FocusState var focus : FocusableField?
+    
     init(){
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
@@ -80,6 +96,9 @@ struct ContentView: View {
             .padding(.vertical)
             .background(Color.gray.opacity(0.03))
             .blur(radius: homeVm.showCardDetail ? 30 : 0)
+            .sheet(isPresented: $isSheetActive, onDismiss: onDismiss) {
+                sheetModalView
+            }
             
             if homeVm.showCardDetail {
                 cardDetail
@@ -139,6 +158,7 @@ struct ContentView: View {
                 HStack{
                     ForEach(ServicesAllows.allCases,id:\.rawValue) { service in
                         Button {
+                            isSheetActive = true
                             homeVm.service = service
                         } label: {
                             VStack{
@@ -162,6 +182,43 @@ struct ContentView: View {
             }
         }
         .padding()
+    }
+    
+    var sheetModalView : some View{
+        VStack{
+            Text(homeVm.service.rawValue)
+                .font(.system(size: 25, weight: .semibold))
+                .foregroundColor(.accentColor)
+            Form{
+                Section("origin product"){
+                    Text("Card slected number")
+                }
+                Section("Amount"){
+                    TextField("", text: $amount){
+                        focus = .destination
+                    }
+                    .submitLabel(.next)
+                }
+                Section("destination product"){
+                    TextField("",text: $destination){
+                        saveTransaction()
+                    }.submitLabel(.done)
+                }
+                Button {
+                    saveTransaction()
+                } label: {
+                    Text("Create transaction")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20,weight: .medium))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+            }
+        }
+        .padding()
+       
     }
     
     var transacciones: some View{
@@ -311,6 +368,14 @@ struct ContentView: View {
         let boxHeight = CGFloat(200)
         let cardHeight = index <= 3 ? CGFloat(index) * 20 : 40
         return boxHeight - cardHeight
+    }
+    
+    func onDismiss(){
+        
+    }
+    
+    func saveTransaction(){
+        print("Saving new account")
     }
 }
 
