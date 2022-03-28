@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D3C0C7927F2053200887E06 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C0C7827F2053200887E06 /* TransactionModel.swift */; };
 		2D72C1AC27D8EFEC006AAAD0 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D72C1AB27D8EFEC006AAAD0 /* CardModel.swift */; };
+		2D7447B327F12AD000EF9263 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7447B227F12AD000EF9263 /* ApiClient.swift */; };
+		2D7447B527F1305600EF9263 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7447B427F1305600EF9263 /* User.swift */; };
+		2D7447B727F1356600EF9263 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7447B627F1356600EF9263 /* LoginViewModel.swift */; };
+		2D7447B927F1737200EF9263 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7447B827F1737200EF9263 /* DateManager.swift */; };
 		2D8A39F527EF82CA0023CA4A /* LoginRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A39F427EF82C90023CA4A /* LoginRegisterView.swift */; };
 		2D990F1D27D6CCA200D90478 /* financialappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D990F1C27D6CCA200D90478 /* financialappApp.swift */; };
 		2D990F1F27D6CCA200D90478 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D990F1E27D6CCA200D90478 /* ContentView.swift */; };
@@ -20,8 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D3C0C7827F2053200887E06 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		2D72C1A927D8E3AD006AAAD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D72C1AB27D8EFEC006AAAD0 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		2D7447B227F12AD000EF9263 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		2D7447B427F1305600EF9263 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2D7447B627F1356600EF9263 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		2D7447B827F1737200EF9263 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		2D8A39F427EF82C90023CA4A /* LoginRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterView.swift; sourceTree = "<group>"; };
 		2D990F1927D6CCA200D90478 /* financialapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = financialapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D990F1C27D6CCA200D90478 /* financialappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = financialappApp.swift; sourceTree = "<group>"; };
@@ -49,8 +59,19 @@
 			isa = PBXGroup;
 			children = (
 				2D72C1AB27D8EFEC006AAAD0 /* CardModel.swift */,
+				2D7447B427F1305600EF9263 /* User.swift */,
+				2D3C0C7827F2053200887E06 /* TransactionModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2D7447B127F12A4F00EF9263 /* management */ = {
+			isa = PBXGroup;
+			children = (
+				2D7447B227F12AD000EF9263 /* ApiClient.swift */,
+				2D7447B827F1737200EF9263 /* DateManager.swift */,
+			);
+			path = management;
 			sourceTree = "<group>";
 		};
 		2D990F1027D6CCA200D90478 = {
@@ -72,6 +93,7 @@
 		2D990F1B27D6CCA200D90478 /* financialapp */ = {
 			isa = PBXGroup;
 			children = (
+				2D7447B127F12A4F00EF9263 /* management */,
 				2D72C1A927D8E3AD006AAAD0 /* Info.plist */,
 				2D72C1AA27D8EFCB006AAAD0 /* Model */,
 				2DEF6EF827D7D7B100A6175E /* SupportingViews */,
@@ -115,6 +137,7 @@
 			children = (
 				2DEF6EF627D7D6F600A6175E /* HomeViewModel.swift */,
 				2DC7EFB227F01EDC00E6BD7D /* ProjectViewModel.swift */,
+				2D7447B627F1356600EF9263 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -206,12 +229,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DEF6EFA27D7D7CC00A6175E /* CreditCard.swift in Sources */,
+				2D7447B927F1737200EF9263 /* DateManager.swift in Sources */,
 				2D8A39F527EF82CA0023CA4A /* LoginRegisterView.swift in Sources */,
+				2D7447B727F1356600EF9263 /* LoginViewModel.swift in Sources */,
+				2D7447B327F12AD000EF9263 /* ApiClient.swift in Sources */,
 				2D990F1F27D6CCA200D90478 /* ContentView.swift in Sources */,
 				2DEF6EF727D7D6F600A6175E /* HomeViewModel.swift in Sources */,
 				2DC7EFB327F01EDC00E6BD7D /* ProjectViewModel.swift in Sources */,
+				2D3C0C7927F2053200887E06 /* TransactionModel.swift in Sources */,
 				2DC7EFB127F018C100E6BD7D /* CreatNewCardView.swift in Sources */,
 				2D990F1D27D6CCA200D90478 /* financialappApp.swift in Sources */,
+				2D7447B527F1305600EF9263 /* User.swift in Sources */,
 				2D72C1AC27D8EFEC006AAAD0 /* CardModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

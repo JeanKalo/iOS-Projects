@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginRegisterView: View {
     
+    @StateObject var loginVm : LoginViewModel = LoginViewModel()
+    
     @State var id : String = ""
     
     @FocusState var focus : Bool
@@ -17,7 +19,29 @@ struct LoginRegisterView: View {
         ZStack{
             background
                 .ignoresSafeArea(.keyboard, edges: .all)
+            
             content
+                
+                
+            if loginVm.isLoading {
+                loadingView
+            }
+            
+            NavigationLink(
+                isActive: $loginVm.navigate,
+                destination: {
+                    ContentView(user : loginVm.userLogged)
+                },
+                label: {EmptyView()}
+            )
+            
+        }
+        .alert(isPresented: $loginVm.showAlert){
+            Alert(
+                title: Text("Error"),
+                message: Text("Ha ocurrido un error"),
+                dismissButton: .cancel()
+            )
         }
         .ignoresSafeArea(.keyboard, edges: .all)
         .onAppear {
@@ -59,7 +83,11 @@ struct LoginRegisterView: View {
     }
     
     var sign_in_button : some View{
-        NavigationLink(destination: ContentView()){
+        Button {
+            Task{
+               await loginVm.login(user_id: id)
+            }
+        } label: {
             Image(systemName: "arrow.right")
                 .font(.system(size: 20))
                 .foregroundColor(.white)
@@ -67,6 +95,7 @@ struct LoginRegisterView: View {
                 .background(Color("signInColor"))
                 .clipShape(Circle())
         }
+
     }
     
     var content  : some View{
@@ -95,6 +124,17 @@ struct LoginRegisterView: View {
             .offset(x: -50)
             Spacer()
         }
+    }
+    
+    var loadingView : some View{
+        VStack{
+            Spacer()
+            ProgressView()
+                .font(.system(size: 40))
+                .progressViewStyle(.circular)
+            Spacer()
+        }
+        .ignoresSafeArea()
     }
     
 }

@@ -13,12 +13,14 @@ struct CreditCard: View{
     var index : Int
     @Binding var swipedCardCounter : Int
     var card : Card
+    var user : User
+    var showNumber : Bool = false
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
             CardBackground(
                 index: index,
                 swipedCardCounter: $swipedCardCounter,
-                color: card.cardColor,
+                color: Color(card.background_color),
                 card: card
             )
             VStack(alignment:.leading){
@@ -28,15 +30,9 @@ struct CreditCard: View{
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 32))
                             .foregroundColor(foreGroundColor)
-                        HStack(spacing: 0){
-                            Text("$")
-                                .font(.system(size: 18,weight: .semibold))
-                                .foregroundColor(foreGroundColor)
-                            Text(String(format:"%.1f",card.monto))
-                                .font(.system(size: 18,weight: .semibold))
-                                .foregroundColor(foreGroundColor)
-                        }
-                        
+                        Text(convertDoubleToCurrency(Double(card.monto) ?? 0.0))
+                            .font(.system(size: 18,weight: .semibold))
+                            .foregroundColor(foreGroundColor)
                     }
                     Spacer()
                     Image("cardIcon")
@@ -48,7 +44,7 @@ struct CreditCard: View{
                 Spacer()
                 
                 //MARK: card number
-                Text("**** **** **** 5647")
+                Text(cardNumber())
                     .font(.system(size: 25,weight: .semibold))
                     .foregroundColor(foreGroundColor)
                 
@@ -56,11 +52,11 @@ struct CreditCard: View{
                 
                 //MARK: owner, expirationDate
                 HStack{
-                    KeyValueView(key:card.owner , value: card.type.rawValue)
+                    KeyValueView(key:user.nombre , value: card.tipo_tarjeta)
                     Spacer()
                     HStack{
-                        KeyValueView(key: "06/26" , value: "expiration")
-                        KeyValueView(key: "123", value: "CVS")
+                        KeyValueView(key: card.fecha_vencimiento , value: "expiration")
+                        KeyValueView(key: card.codigo_seguridad, value: "CVS")
                     }
                 }
             }
@@ -68,6 +64,39 @@ struct CreditCard: View{
         }
     }
 
+    func convertDoubleToCurrency(_ amount : Double)->String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = Locale.current
+        return numberFormatter.string(from: NSNumber(value: amount)) ?? "0.0"
+    }
+    
+    
+   func cardNumber()->String{
+       var  string : String = ""
+       let length = card.numero.count
+       if showNumber {
+           for x in 0..<length{
+               if x % 4 == 0 {string = string + " "}
+               let input = card.numero
+               let char = input[input.index(input.startIndex, offsetBy: x)]
+               string = string + String(char)
+           }
+       }else{
+           for x in 0..<length{
+               if string.count < 15{
+                   if x % 4 == 0 {string = string + " "}
+                   string = string + "*"
+               }else{
+                   if x % 4 == 0 {string = string + " "}
+                   let input = card.numero
+                   let char = input[input.index(input.startIndex, offsetBy: x)]
+                   string = string + String(char)
+               }
+           }
+       }
+       return string
+   }
     
     static func cardOffsetY(index : Int)->CGFloat{
         return index <= 3 ? CGFloat(index) * 20 : 20
@@ -108,12 +137,12 @@ struct CardBackground :View {
     
     var body: some View{
         HStack{
-            ForEach(card.listCircles,id:\.id) { circle in
-                Circle()
-                    .fill(circle.color)
-                    .frame(width: circle.size, height: circle.size)
-                    .offset(x: circle.offset, y: circle.offset)
-            }
+//            ForEach(card.colors,id:\.color_id) { circle in
+//                Circle()
+//                    .fill(Color(circle.color))
+//                    .frame(width: circle.size, height: circle.size)
+//                    .offset(x: circle.offset , y: circle.offset)
+//            }
         }
         .frame(maxWidth: CGFloat.getScreenWidth - 60, maxHeight: .infinity)
         .background(color)
@@ -137,14 +166,23 @@ struct CardBackground :View {
         return boxHeight - cardHeight
     }
     
+    func string_CGFloat(_ str : String)->CGFloat{
+        if let n = NumberFormatter().number(from: str) {
+            let f = CGFloat(truncating: n)
+            return f
+        }else{
+            return CGFloat.random(in: 0.0..<40.0)
+        }
+    }
+    
 }
 
-struct CreditCard_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-        //        CreditCard(
-        //            index: 2, swipedCardCounter: .constant(1),
-        //            card: Card(id: 0, cardColor: Color("Morado"), owner: "Jean Carlos 1")
-        //        )
-    }
-}
+//struct CreditCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//        //        CreditCard(
+//        //            index: 2, swipedCardCounter: .constant(1),
+//        //            card: Card(id: 0, cardColor: Color("Morado"), owner: "Jean Carlos 1")
+//        //        )
+//    }
+//}

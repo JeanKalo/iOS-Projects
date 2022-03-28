@@ -10,20 +10,45 @@ import Combine
 
 struct CreatNewCardView: View {
     
+    var userLogged : User
+    
     @StateObject var projectVm  = ProjectViewModel()
     
     @State var bg_color_selected : Int = 0
     
+    @State var cardType_selected : CreditCardType = .Joven
+    
     @State var numberOfcircles : Int = 0
     
+    @Environment(\.presentationMode) private var presentation
+    
     var body: some View {
-        Form{
-            cardSection
-            backgroundColor
-            backgroundCircles
-            saveButton
+        ZStack {
+            Form{
+                cardSection
+                backgroundColor
+                cardType
+                //            backgroundCircles
+                saveButton
+            }
+            .alert(isPresented: $projectVm.showAlert){
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Ha ocurrido un error."),
+                    dismissButton: .cancel()
+                )
+            }
+            
+            if projectVm.isLoading {
+                VStack{
+                    Spacer()
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                    Spacer()
+                }
+            }
+            
         }
-        .navigationTitle("New card")
     }
     
     var cardSection : some View{
@@ -31,7 +56,9 @@ struct CreatNewCardView: View {
             CreditCard(
                 index: 0,
                 swipedCardCounter: .constant(0),
-                card: projectVm.card
+                card: projectVm.card,
+                user: userLogged,
+                showNumber: true
             )
                 .frame(
                     width: CGFloat.getScreenWidth - 60,
@@ -46,7 +73,7 @@ struct CreatNewCardView: View {
                 HStack{
                     ForEach(projectVm.colors.indices){ x in
                         Circle()
-                            .fill(projectVm.colors[x])
+                            .fill(Color(projectVm.colors[x]))
                             .frame(width: 20, height: 20)
                             .shadow(
                                 color: bg_color_selected == x ? Color("grayColor") : Color.white ,
@@ -55,18 +82,34 @@ struct CreatNewCardView: View {
                             .overlay(
                                 Image(systemName: "checkmark.circle")
                                     .font(.system(size: 18))
-                                    .foregroundColor( bg_color_selected == x ? .white : projectVm.colors[x] )
+                                    .foregroundColor( bg_color_selected == x ? .white : Color(projectVm.colors[x]) )
                                 
                             )
                             .onTapGesture {
                                 withAnimation {
                                     bg_color_selected = x
-                                    projectVm.card.cardColor =  projectVm.colors[x]
+                                    projectVm.card.background_color =  projectVm.colors[x]
                                 }
                             }
                         
                     }
                 }.padding()
+            }
+        }
+    }
+    
+    var cardType : some View{
+        Section("Card type"){
+            Picker("card type", selection: $cardType_selected){
+                ForEach(CreditCardType.allCases,id:\.self) { type in
+                    Text(type.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
+            .onChange(of: cardType_selected) { newValue in
+                cardType_selected = newValue
+                projectVm.change_money(cardType: cardType_selected )
+                projectVm.card.tipo_tarjeta = cardType_selected.rawValue
             }
         }
     }
@@ -91,7 +134,15 @@ struct CreatNewCardView: View {
     var saveButton : some View{
         Section{
             Button {
-               print("Saving new account")
+                Task{
+                  let result =   await projectVm.create_card(user_id: userLogged.identificacion)
+                    if result {
+                        DispatchQueue.main.async {
+                            self.presentation.wrappedValue.dismiss()
+                        }
+                    }
+                }
+               
             } label: {
                 Text("Save new card")
                     .padding()
@@ -102,13 +153,8 @@ struct CreatNewCardView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             
-        }
+        }.listRowBackground(Color.clear)
     }
     
 }
 
-struct CreatNewCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreatNewCardView()
-    }
-}

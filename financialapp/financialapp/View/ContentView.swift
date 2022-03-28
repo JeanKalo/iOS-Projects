@@ -9,15 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     
+    var userLogged : User
+    
     @StateObject var homeVm : HomeViewModel = HomeViewModel()
     
-    @State var cardSelected : Card  =  Card(
-        id: 0,
-        cardColor: Color("Morado"),
-        owner: "Jean Carlos 1",
-        type: .Joven,
-        listCircles: [],
-        monto: 0.0
+    @State var cardSelected : Card = Card(
+        tarjeta_id: "",
+        background_color: "",
+        numero: "",
+        monto: "",
+        fecha_vencimiento: "",
+        codigo_seguridad: "",
+        tipo_tarjeta: "",
+        persona_id: "",
+        offset: 0.0,
+        colors: []
     )
     
     @State var index_selected : Int = 0
@@ -42,15 +48,16 @@ struct ContentView: View {
     
     @FocusState var focus : FocusableField?
     
-    init(){
+    init(user : User){
+        self.userLogged = user
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
-        
+    
     var body: some View {
         ZStack {
             VStack(alignment: .leading){
                 ///app bar
-                AppBar()
+                appBar
                 
                 ///Tarjetas del usuario
                 paintCards
@@ -77,11 +84,11 @@ struct ContentView: View {
                         }
                         .font(.system(size: 18,weight:.medium))
                     }
-
+                    
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    NavigationLink(destination: CreatNewCardView()){
+                    NavigationLink(destination: CreatNewCardView(userLogged: userLogged)){
                         HStack(spacing:0){
                             Image(systemName: "plus")
                                 .font(.system(size: 15))
@@ -99,13 +106,70 @@ struct ContentView: View {
             .sheet(isPresented: $isSheetActive, onDismiss: onDismiss) {
                 sheetModalView
             }
+            .alert(isPresented: $homeVm.showAlert){
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Ha ocurrido un error."),
+                    dismissButton: .cancel()
+                )
+            }
             
             if homeVm.showCardDetail {
                 cardDetail
             }
-           
+            
+            if homeVm.isLoading {
+                loadingView
+            }
+            
             
         }
+        .onAppear {
+            homeVm.initialize(user_id: userLogged.identificacion)
+        }
+        .onDisappear {
+            for index in homeVm.creditCards.indices.reversed(){
+                withAnimation {
+                    homeVm.creditCards[index].offset = 0.0
+                    homeVm.swipedCardCounter = 0
+                }
+            }
+        }
+    }
+    
+    var loadingView : some View{
+        VStack{
+            Spacer()
+            ProgressView()
+                .font(.system(size: 40))
+                .progressViewStyle(.circular)
+            Spacer()
+        }
+        .ignoresSafeArea()
+    }
+    
+    var appBar: some View{
+        HStack{
+            //MARK: name
+            VStack(alignment:.leading){
+                Text("Welcome!")
+                    .font(.system(size: 12, weight: .heavy))
+                    .foregroundColor(.gray)
+                Text(userLogged.nombre)
+                    .font(.system(size: 15, weight: .heavy))
+                    .foregroundColor(.primary)
+            }
+            Spacer()
+            //MARK: photo
+            Image(systemName: "applelogo")
+                .foregroundColor(Color("Morado"))
+                .padding(4)
+                .background(
+                    Circle()
+                        .strokeBorder(Color.primary,lineWidth: 1)
+                )
+        }
+        .padding(30)
     }
     
     var cardDetail : some View{
@@ -114,7 +178,9 @@ struct ContentView: View {
             CreditCard(
                 index: 0,
                 swipedCardCounter: .constant(0),
-                card: cardSelected
+                card: cardSelected,
+                user: userLogged,
+                showNumber: true
             )
                 .frame(
                     width: getWidth(index: 0),
@@ -137,7 +203,7 @@ struct ContentView: View {
             } label: {
                 Image(systemName: "xmark")
                     .font(.system(size: 18,weight: .bold))
-                    .foregroundColor(Color.primary)
+                    .foregroundColor(Color.white)
                     .padding()
                     .background(Color.secondary)
                     .clipShape(Circle())
@@ -174,7 +240,7 @@ struct ContentView: View {
                             .shadow(color: Color("grayColor"), radius: 4, x: 2, y: 2)
                             
                         }
-                      
+                        
                     }
                     
                 }
@@ -218,7 +284,7 @@ struct ContentView: View {
             }
         }
         .padding()
-       
+        
     }
     
     var transacciones: some View{
@@ -226,15 +292,20 @@ struct ContentView: View {
             Text("Transacciones")
                 .font(.system(size: 12, weight: .heavy))
                 .foregroundColor(.gray)
-            List(0..<10){ _ in
-                TransactionItem()
-                    .listRowBackground(Color.white)
-                    .listRowSeparator(.hidden)
+            if homeVm.transactions.count > 0 {
+                List(homeVm.transactions.indices){ x in
+                    TransactionItem(transaction: homeVm.transactions[x])
+                        .listRowBackground(Color.white)
+                        .listRowSeparator(.hidden)
+                }
+                .background(Color.white)
+                .listStyle(.plain)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(color: Color("grayColor"), radius: 10, x: 2, y: 2)
+            }else{
+                Spacer()
             }
-            .background(Color.white)
-            .listStyle(.plain)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .shadow(color: Color("grayColor"), radius: 10, x: 2, y: 2)
+            
         }
         .padding()
     }
@@ -242,22 +313,25 @@ struct ContentView: View {
     var paintCards : some View{
         HStack{
             ZStack(alignment:Alignment(horizontal: .leading, vertical: .top)){
-
+                
                 ForEach(homeVm.creditCards.indices.reversed(), id:\.self){ i in
                     HStack{
-                    Spacer()
+                        Spacer()
                         CreditCard(
                             index: i,
                             swipedCardCounter: $homeVm.swipedCardCounter,
-                            card: homeVm.creditCards[i]
+                            card: homeVm.creditCards[i],
+                            user: userLogged
                         )
-                           
+                        
                             .onTapGesture {
+                                withAnimation { homeVm.transactions.removeAll()}
+                                self.homeVm.getCard_transaction(tarjeta_id: self.homeVm.creditCards[i].tarjeta_id )
                                 index_selected = i
                                 cardSelected = homeVm.creditCards[i]
                                 withAnimation { homeVm.showCardDetail = true }
                             }
-                            //Hero animation
+                        //Hero animation
                             .matchedGeometryEffect(id: "CARD_HERO \(i)", in: cardHeroAnimation)
                         
                             .frame(
@@ -269,8 +343,8 @@ struct ContentView: View {
                                 x: CreditCard.cardOffsetX(index: i - homeVm.swipedCardCounter),
                                 y:-CreditCard.cardOffsetY(index: i - homeVm.swipedCardCounter)
                             )
-                       
-                            
+                        
+                        
                         Spacer()
                     }
                     .frame(height: 300)
@@ -291,7 +365,7 @@ struct ContentView: View {
                 }
             }
             .frame(width: .getScreenWidth, height: 250)
-
+            
         }
     }
     
@@ -300,7 +374,7 @@ struct ContentView: View {
         Button {
             for index in homeVm.creditCards.indices.reversed(){
                 withAnimation {
-                    homeVm.creditCards[index].offset = 0
+                    homeVm.creditCards[index].offset = 0.0
                     homeVm.swipedCardCounter = 0
                 }
             }
@@ -327,6 +401,15 @@ struct ContentView: View {
         }
     }
     
+    func string_CGFloat(_ str : String)->CGFloat{
+        if let n = NumberFormatter().number(from: str) {
+            let f = CGFloat(truncating: n)
+            return f
+        }else{
+            return CGFloat.random(in: 0.0..<40.0)
+        }
+    }
+    
     func onChanged(value : DragGesture.Value, index : Int){
         //Sólo movimiento hacia arriba
         if value.translation.height < 0 {
@@ -337,10 +420,10 @@ struct ContentView: View {
     func onEnded(value : DragGesture.Value, index : Int){
         withAnimation {
             if value.translation.height < -100 {
-                homeVm.creditCards[index].offset = -500
+                homeVm.creditCards[index].offset = -500.0
                 homeVm.swipedCardCounter += 1
             }else{
-                homeVm.creditCards[index].offset = 0
+                homeVm.creditCards[index].offset = 0.0
             }
         }
     }
@@ -379,50 +462,26 @@ struct ContentView: View {
     }
 }
 
-struct AppBar : View{
-    var body: some View{
-        HStack{
-            //MARK: name
-            VStack(alignment:.leading){
-                Text("Welcome!")
-                    .font(.system(size: 12, weight: .heavy))
-                    .foregroundColor(.gray)
-                Text("Jean Carlos")
-                    .font(.system(size: 15, weight: .heavy))
-                    .foregroundColor(.primary)
-            }
-            Spacer()
-            //MARK: photo
-            Image(systemName: "applelogo")
-                .foregroundColor(Color("Morado"))
-                .padding(4)
-                .background(
-                    Circle()
-                        .strokeBorder(Color.primary,lineWidth: 1)
-                )
-        }
-        .padding(30)
-    }
-}
 
 struct TransactionItem:View{
+    var transaction : TransactionModel
     var body: some View{
         VStack {
             HStack{
                 VStack(alignment:.leading){
-                   Text("Pago de nomina")
-                        .font(.system(size: 15, weight: .regular))
+                    Text(transaction.tipo_transaccion)
                         .foregroundColor(.black)
-                    Text("income")
-                        .font(.system(size: 12, weight: .regular))
-                        .foregroundColor(.gray)
+                        .font(.system(size: 15, weight: .regular))
+                        .frame(width: 200, height: 60,alignment:.leading)
+                        .lineLimit(2)
+                        
                 }
                 Spacer()
                 VStack(alignment:.leading){
-                    Text("-$144.00")
+                    Text("$\(transaction.monto)")
                         .font(.system(size: 15, weight: .regular))
                         .foregroundColor(.red)
-                     Text("18 Sept 2020")
+                    Text(transaction.created_at)
                         .font(.system(size: 12, weight: .regular))
                         .foregroundColor(.gray)
                 }
@@ -431,20 +490,20 @@ struct TransactionItem:View{
                 .fill(Color.gray.opacity(0.1))
                 .frame( height: 1)
         }
-        .padding(.horizontal,30)
+        .padding(.horizontal,5)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
 
 
 extension CGFloat {
     static var getScreenWidth : CGFloat {
-        UIScreen.main.bounds.size.width 
+        UIScreen.main.bounds.size.width
     }
     static var getScreenHeight : CGFloat {
         UIScreen.main.bounds.size.height
