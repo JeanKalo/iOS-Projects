@@ -192,7 +192,12 @@ struct ContentView: View {
             servicios
             
             //MARK: transaciones por tarjeta seleccionada
-            transacciones
+            if homeVm.transactions.count > 0 {
+                transacciones
+            }else{
+                Spacer()
+            }
+           
             
             
             //MARK: Close button
@@ -244,6 +249,7 @@ struct ContentView: View {
                     }
                     
                 }
+                .padding(.vertical)
                 
             }
         }
@@ -281,6 +287,7 @@ struct ContentView: View {
                         .font(.system(size: 20,weight: .medium))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
+                .listRowBackground(Color.clear)
             }
         }
         .padding()
@@ -292,20 +299,15 @@ struct ContentView: View {
             Text("Transacciones")
                 .font(.system(size: 12, weight: .heavy))
                 .foregroundColor(.gray)
-            if homeVm.transactions.count > 0 {
-                List(homeVm.transactions.indices){ x in
-                    TransactionItem(transaction: homeVm.transactions[x])
-                        .listRowBackground(Color.white)
-                        .listRowSeparator(.hidden)
-                }
-                .background(Color.white)
-                .listStyle(.plain)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .shadow(color: Color("grayColor"), radius: 10, x: 2, y: 2)
-            }else{
-                Spacer()
+            List(homeVm.transactions.indices){ x in
+                TransactionItem(transaction: homeVm.transactions[x])
+                    .listRowBackground(Color.white)
+                    .listRowSeparator(.hidden)
             }
-            
+            .background(Color.white)
+            .listStyle(.plain)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(color: Color("grayColor"), radius: 10, x: 2, y: 2)
         }
         .padding()
     }
@@ -478,7 +480,7 @@ struct TransactionItem:View{
                 }
                 Spacer()
                 VStack(alignment:.leading){
-                    Text("$\(transaction.monto)")
+                    Text( convertDoubleToCurrency( Double(transaction.monto) ?? 0.0 ))
                         .font(.system(size: 15, weight: .regular))
                         .foregroundColor(.red)
                     Text(transaction.created_at)
@@ -492,6 +494,14 @@ struct TransactionItem:View{
         }
         .padding(.horizontal,5)
     }
+    
+    func convertDoubleToCurrency(_ amount : Double)->String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = Locale.current
+        return numberFormatter.string(from: NSNumber(value: amount)) ?? "0.0"
+    }
+    
 }
 
 //struct ContentView_Previews: PreviewProvider {
